@@ -365,7 +365,7 @@
                     error: function() {
     
                         sLoader.slideUp("slow"); 
-                        $('.message-warning').html("Something went wrong. Please try again.");
+                        $('.message-warning').html("Oops!! Our mail server is down. try contacting via call or Mail us directly.");
                         $('.message-warning').slideDown("slow");
     
                     }
