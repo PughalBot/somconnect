@@ -3163,6 +3163,33 @@ html.no-csstransitions .home-content__main {
     margin: 0;
 }
 
+.foundert-social {
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+    font-size: 5rem;
+}
+
+.founder-social li {
+    margin-right: 0px;
+    padding-left: 0;
+    display: inline-block;
+}
+
+.founder-social li a {
+    color: #000000;
+    font-size: 2rem;
+}
+
+.founder-social li a:hover, 
+.founder-social li a:focus {
+    color: #f4fbf5;
+}
+
+.founder-social li:last-child {
+    margin: 0;
+}
+
 .message-warning, 
 .message-success {
     display: none;
