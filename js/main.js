@@ -9,7 +9,7 @@
     
     var cfg = {
         scrollDuration : 800, // smoothscroll duration
-        mailChimpURL   : 'https://somconnect.us13.list-manage.com/subscribe/post?u=a868e083de6f1f3162bf68731&amp;id=55e522354b&amp;f_id=007d45e1f0'   // mailchimp url
+        mailChimpURL   : 'https://somconnect.us13.list-manage.com/subscribe/post?u=a868e083de6f1f3162bf68731&amp;id=55e522354b&amp;f_id=006245e1f0'   // mailchimp url
     },
 
     $WIN = $(window);
@@ -154,40 +154,50 @@
 
    /* Stat Counter
     * ------------------------------------------------------ */
-    var clStatCount = function() {
+   var clStatCount = function() {
         
-        var statSection = $(".about-stats"),
-            stats = $(".stats__count");
+    var statSection = $(".about-stats"),
+        stats = $(".stats__count");
 
-        statSection.waypoint({
+    statSection.waypoint({
 
-            handler: function(direction) {
+        handler: function(direction) {
 
-                if (direction === "down") {
+            if (direction === "down") {
 
-                    stats.each(function () {
-                        var $this = $(this);
+                stats.each(function () {
+                    var $this = $(this);
+                    
+                    // Check if the text contains a '+' symbol
+                    var hasPlus = $this.text().includes('+');
+                    
+                    // Extract the numerical value (removing the '+' symbol if it's there)
+                    var value = parseInt($this.text());
 
-                        $({ Counter: 0 }).animate({ Counter: $this.text() }, {
-                            duration: 4000,
-                            easing: 'swing',
-                            step: function (curValue) {
-                                $this.text(Math.ceil(curValue));
-                            }
-                        });
+                    // Animate from 0 to the actual number
+                    $({ Counter: 0 }).animate({ Counter: value }, {
+                        duration: 4000,
+                        easing: 'swing',
+                        step: function (curValue) {
+                            // If original value had a '+', append it back during the animation
+                            $this.text(Math.ceil(curValue) + (hasPlus ? '+' : ''));
+                        }
                     });
+                });
 
-                } 
+            } 
 
-                // trigger once only
-                this.destroy();
+            // trigger once only
+            this.destroy();
 
-            },
+        },
 
-            offset: "90%"
+        offset: "90%"
 
-        });
-    };
+    });
+};
+
+
 
 
    /* Masonry
@@ -415,7 +425,7 @@
 
         $.ajaxChimp.translations.es = {
             'submit': 'Submitting...',
-            0: '<i class="fa fa-check"></i> We have sent you a confirmation email',
+            0: '<i class="fa fa-check"></i> We got your mail address',
             1: '<i class="fa fa-warning"></i> You must enter a valid e-mail address.',
             2: '<i class="fa fa-warning"></i> E-mail address is not valid.',
             3: '<i class="fa fa-warning"></i> E-mail address is not valid.',
