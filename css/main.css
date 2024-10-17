@@ -2569,9 +2569,9 @@ html.no-csstransitions .home-content__main {
 }
 
 .item-folio__thumb a::after {
-    content: "Stats";
-    font-family: georgia, serif;
-    font-size: 1rem;
+    content: "STATS";
+    font-family: "montserrat-semibold", sans-serif;
+    font-size: .9rem;
     display: block;
     height: 30px;
     width: 30px;
